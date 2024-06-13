@@ -2,7 +2,6 @@ class BookmarksController < ApplicationController
   def new
     @list = List.find(params[:list_id])
     @bookmark = Bookmark.new
-    render :new
   end
 
   def create
@@ -11,7 +10,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to @list, notice: 'Bookmark was successfully created.'
     else
-      render 'lists/show' # Renderizar 'lists/show' en caso de error
+      render :new # Renderizar 'new' en caso de error
     end
   end
 
